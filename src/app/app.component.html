@@ -1,11 +1,101 @@
-<app-top-bar></app-top-bar>
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">12 Week Shred Calculator</a>
+</nav>
 
-<div class="container">
-  <router-outlet></router-outlet>
+<form class="offset-md-4 col-md-4" (ngSubmit)="calculateMacros()">
+  <div class="form-group">
+    <label>Gender</label>
+    <select
+      class="form-control"
+      placeholder="Select"
+      [(ngModel)]="gender"
+      name="gender"
+    >
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Weight in KG</label>
+    <input
+      type="number"
+      class="form-control"
+      [(ngModel)]="weight"
+      name="weight"
+    />
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Height in CM</label>
+    <input
+      type="number"
+      class="form-control"
+      [(ngModel)]="height"
+      name="height"
+    />
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Age</label>
+    <input type="number" class="form-control" [(ngModel)]="age" name="age" />
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Activity Level</label>
+    <select
+      class="form-control"
+      [(ngModel)]="activityVariable"
+      name="activity-level"
+    >
+      <option value="1.2">1.2 (Sedentary)</option>
+      <option value="1.3">1.3 (Lightly Active)</option>
+      <option value="1.5">1.5 (Moderately Active)</option>
+      <option value="1.7">1.7 (Very Active)</option>
+      <option value="1.9">1.9 (Extremely Active)</option>
+    </select>
+  </div>
+  <button
+    type="submit"
+    class="btn btn-primary"
+    [disabled]="activityVariable == null"
+  >
+    Submit
+  </button>
+</form>
+
+<div *ngIf="submitted" class="results offset-md-4 col-md-4">
+  <h1 class="results-header">Macros:</h1>
+
+  <h2>Low Carb Day:</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Protein</th>
+        <th scope="col">Carbs</th>
+        <th scope="col">Fats</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ macros.lowCarb.protein | number: "1.0-0" }}</td>
+        <td>{{ macros.lowCarb.carbs | number: "1.0-0" }}</td>
+        <td>{{ macros.lowCarb.fats | number: "1.0-0" }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>High Carb Day:</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Protein</th>
+        <th scope="col">Carbs</th>
+        <th scope="col">Fats</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ macros.highCarb.protein | number: "1.0-0" }}</td>
+        <td>{{ macros.highCarb.carbs | number: "1.0-0" }}</td>
+        <td>{{ macros.highCarb.fats | number: "1.0-0" }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-
-<!-- 
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
--->
