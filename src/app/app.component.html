@@ -2,7 +2,11 @@
   <a class="navbar-brand" href="#">12 Week Shred Calculator</a>
 </nav>
 
-<form class="offset-md-4 col-md-4" (ngSubmit)="calculateMacros()">
+<form
+  class="offset-md-4 col-md-4"
+  (ngSubmit)="calculateMacros()"
+  *ngIf="!submitted"
+>
   <div class="form-group">
     <label>Gender</label>
     <select
@@ -16,7 +20,7 @@
     </select>
   </div>
   <div class="form-group">
-    <label for="exampleInputEmail1">Weight in KG</label>
+    <label for="exampleInputEmail1">Weight in lbs.</label>
     <input
       type="number"
       class="form-control"
@@ -63,7 +67,7 @@
 <div *ngIf="submitted" class="results offset-md-4 col-md-4">
   <h1 class="results-header">Macros:</h1>
 
-  <h2>Low Carb Day:</h2>
+  <h2>Low Carb Day: (5 Days a Week)</h2>
   <table class="table">
     <thead>
       <tr>
@@ -81,7 +85,7 @@
     </tbody>
   </table>
 
-  <h2>High Carb Day:</h2>
+  <h2>High Carb Day: (2 Days a Week)</h2>
   <table class="table">
     <thead>
       <tr>
@@ -98,4 +102,7 @@
       </tr>
     </tbody>
   </table>
+  <button class="btn btn-primary" (ngClick)="resetForm()">
+    Reset
+  </button>
 </div>

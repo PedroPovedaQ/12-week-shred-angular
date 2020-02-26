@@ -16,9 +16,22 @@ export class AppComponent {
     lowCarb: { protein: 0, carbs: 0, fats: 0 },
     highCarb: { protein: 0, carbs: 0, fats: 0 }
   };
-
+  public resetForm() {
+    this.submitted = false;
+    this.gender = null;
+    this.weight = null;
+    this.height = null;
+    this.age = null;
+    this.activityVariable = null;
+    this.macros = {
+      lowCarb: { protein: 0, carbs: 0, fats: 0 },
+      highCarb: { protein: 0, carbs: 0, fats: 0 }
+    };
+  }
   public calculateMacros(): void {
     this.submitted = true;
+    //convert weight from lbs to kg
+    this.weight = Math.floor(this.weight * 0.453592);
     if (this.gender == null) {
       alert("Gender not Selected!");
     }
