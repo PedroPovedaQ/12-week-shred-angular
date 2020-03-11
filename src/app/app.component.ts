@@ -10,6 +10,8 @@ export class AppComponent {
   gender = null;
   weight = null;
   height = null;
+  feet = null;
+  inches = null;
   age = null;
   activityVariable = null;
   macros = {
@@ -21,6 +23,8 @@ export class AppComponent {
     this.gender = null;
     this.weight = null;
     this.height = null;
+    this.feet = null;
+    this.inches = null;
     this.age = null;
     this.activityVariable = null;
     this.macros = {
@@ -32,6 +36,8 @@ export class AppComponent {
     this.submitted = true;
     //convert weight from lbs to kg
     this.weight = Math.floor(this.weight * 0.453592);
+    this.height = Math.floor((this.feet + this.inches / 12.0) * 30.48);
+    console.log(this.weight);
     if (this.gender == null) {
       alert("Gender not Selected!");
     }

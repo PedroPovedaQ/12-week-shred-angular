@@ -24,8 +24,11 @@ form {
   text-decoration: underline;
 }
 
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/
+.height-input {
+  width: 45%;
+  display: inline-block;
+}
+
+.height-input:not(:first-of-type) {
+  margin-left: 5%;
+}
